@@ -9,7 +9,7 @@ process multiqc {
 
 	input:
 	path fastqc 
-//	path metrics
+	path metrics
 	path slm_log
 	path star_log
 

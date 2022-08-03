@@ -21,6 +21,8 @@ include { check_ss }			from './modules/check_samplesheet'
 include { fastqc }			from './modules/fastqc'
 include { salmon }			from './modules/salmon'
 include { star }			from './modules/star'
+include { picard_cmm }			from './modules/picard'
+include { picard_crsm }			from './modules/picard'
 include { coverage as cov_fw }		from './modules/coverage'
 include { coverage as cov_rev }		from './modules/coverage'
 include { multiqc }			from './modules/multiqc'
@@ -74,6 +76,10 @@ workflow RNASEQ {
 	// Align reads
 	star(READS, params.star_idx, params.star_quantMode)
 
+	// Picard QC
+	picard_cmm(star.out.bam, params.genome)
+	picard_crsm(star.out.bam, params.genome, params.ref_flat, params.ribo_intervals)
+
 	// Coverage Tracks
 	cov_fw(star.out.bam, 'forward')
 	cov_rev(star.out.bam, 'reverse')
@@ -81,6 +87,7 @@ workflow RNASEQ {
 	// Collect all QC outputs to multiqc
 	multiqc(
 		fastqc.out.collect(),
+		picard_cmm.out.mix(picard_crsm.out).collect(),
 		salmon.out.logs.collect(),
 		star.out.logs.collect()
 	)
