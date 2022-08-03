@@ -5,7 +5,7 @@ process star {
 	time '24h'
 	tag "${meta.id}"
 	publishDir "${params.outdir}/${meta.id}"
-	publishDir "${params.outdir}/bam", mode: 'copy'
+	publishDir "${params.outdir}/bam", mode: 'copy', pattern: '*.bam*'
 
 	module 'star/2.7.7a'
 	module 'samtools'
