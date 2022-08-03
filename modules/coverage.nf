@@ -4,7 +4,8 @@ process coverage {
 	tag "${meta.id}"
 	module 'deeptools/3.2.0'
 	cpus 6
-	memory '24G'	
+	time '24h'
+	memory '32G'
 //	label 'medium'
 	publishDir "${params.outdir}/${meta.id}"
 	publishDir "${params.outdir}/bw", mode: 'copy'
