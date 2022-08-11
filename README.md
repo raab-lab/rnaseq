@@ -22,9 +22,13 @@ Components
 - [X] FastQC
 - [X] Alignment
 - [X] Expression quantification
-- [ ] RNA QC metrics
-- [ ] Coverage
+- [X] RNA QC metrics
+- [X] Coverage
 - [X] MultiQC report
+- [ ] Airtable Integration
+	- [X] Pull Experiment
+	- [X] Update Sample Table
+	- [ ] Pull Samples
 
 Usage
 =====
