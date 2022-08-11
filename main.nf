@@ -13,47 +13,41 @@ nextflow.enable.dsl=2
 params.sample_sheet		= ''
 params.outdir			= 'Output'
 params.create_samplesheet 	= ''
+params.pull_experiment		= ''
+params.pull_samples		= ''
 
-// import RNAseq modules
+// import subworkflows
 
-include { create_ss }			from './modules/create_samplesheet'
-include { check_ss }			from './modules/check_samplesheet'
-include { fastqc }			from './modules/fastqc'
-include { salmon }			from './modules/salmon'
-include { star }			from './modules/star'
-include { picard_cmm }			from './modules/picard'
-include { picard_crsm }			from './modules/picard'
-include { coverage as cov_fw }		from './modules/coverage'
-include { coverage as cov_rev }		from './modules/coverage'
-include { multiqc }			from './modules/multiqc'
+include { CREATE_SAMPLESHEET }				from './subworkflows/create_samplesheet'
+include { CREATE_SAMPLESHEET as AT_CREATE_SS}		from './subworkflows/create_samplesheet'
+
+// import modules
+
+include { pull_experiment; pull_samples }		from './modules/airtable'
+include { update_paths }				from './modules/airtable'
+include { create_ss }					from './modules/create_samplesheet'
+include { check_ss }					from './modules/check_samplesheet'
+include { fastqc }					from './modules/fastqc'
+include { salmon }					from './modules/salmon'
+include { star }					from './modules/star'
+include { picard_cmm; picard_crsm }			from './modules/picard'
+include { coverage as cov_fw }				from './modules/coverage'
+include { coverage as cov_rev }				from './modules/coverage'
+include { multiqc }					from './modules/multiqc'
 
 // Pull reads from sample sheet and set channel
 
 def parse_samplesheet(LinkedHashMap row){
 	def meta = [:]
 	meta.id		= row.ID
-	meta.lib_id	= row.lib_id
-	meta.cell_line	= row.cell_line
-	meta.trt	= row.treatment
-	meta.rep	= row.replicate
+	meta.lib_id	= row.SampleID
+	meta.cell_line	= row["Cell Line"]
+	meta.trt	= row.Treatment
+	meta.rep	= row.Replicate
 
-	def array = [meta, file(row.read1), file(row.read2) ]
+	def array = [meta, file(row.R1), file(row.R2) ]
 
 	return array
-}
-
-workflow CREATE_SAMPLESHEET {
-
-	take:
-	inventory
-
-	main:
-
-	create_ss(inventory)
-
-	emit:
-	create_ss.out
-
 }
 
 workflow RNASEQ {
@@ -96,6 +90,11 @@ workflow RNASEQ {
 }
 
 workflow {
+	if (params.pull_experiment) {
+	// TODO: Get experiment IDs into the samplesheet
+		pull_experiment(params.pull_experiment) | AT_CREATE_SS | update_paths
+		
+	}
 	if (params.create_samplesheet && params.sample_sheet) {
 		exit 1, "ERROR: Conflicting samplesheet arguments. Choose one or the other."
 	}

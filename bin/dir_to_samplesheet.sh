@@ -8,7 +8,7 @@ then
 	exit 1
 else
 
-	HEADER=read1,read2,lib_id,cell_line,treatment,replicate
+	HEADER="R1,R2,SampleID,Cell Line,Treatment,Replicate"
 	echo $HEADER > samplesheet.csv
 
 	for R1 in ${DIR}/*R1_001.fastq.gz; do
