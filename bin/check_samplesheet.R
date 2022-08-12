@@ -12,7 +12,7 @@ dup_err <- function(dup){
 
 args <- commandArgs(trailingOnly = T)
 
-SS <- read.csv(args[1], colClasses = "character", na.strings = "")
+SS <- read.csv(args[1], colClasses = "character", na.strings = c("", "NA"), check.names = F)
 workflow <- args[2]
 
 cols <- c("R1", "R2", "SampleID", "Cell Line", "Treatment", "Replicate")
