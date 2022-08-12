@@ -27,7 +27,7 @@ process update_paths {
 
 	script:
 	"""
-	update_sample_paths.py $samplesheet
+	update_samples.py $samplesheet
 	"""
 }
 
