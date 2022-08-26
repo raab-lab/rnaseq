@@ -27,10 +27,15 @@ include { RNASEQ as AT_RNASEQ }				from './subworkflows/rnaseq'
 
 include { pull_experiment; pull_samples }		from './modules/airtable'
 include { update_paths }				from './modules/airtable'
+include { helpMessage }					from './modules/functions'
 
 // Pull reads from sample sheet and set channel
 
 workflow {
+
+	if (params.help) {
+		log.info helpMessage()
+	}
 
 	if (params.new_experiment) {
 	// TODO: Get experiment IDs into the samplesheet
