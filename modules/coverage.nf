@@ -17,6 +17,9 @@ process coverage {
 	output:
 	tuple val(meta), path("*.bw")
 
+	when:
+	!params.skip_align || !params.skip_coverage
+
 	script:
 	"""
 	bamCoverage -b ${bam} \\

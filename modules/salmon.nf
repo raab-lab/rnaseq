@@ -20,6 +20,9 @@ process salmon {
 	path "${meta.id}", emit: quants
 	path "*", emit: logs
 
+	when:
+	!params.skip_quant
+
 	"""
 	salmon quant \\
 			-i ${index} \\

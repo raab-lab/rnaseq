@@ -61,10 +61,10 @@ workflow RNASEQ {
 
 	// Collect all QC outputs to multiqc
 	multiqc(
-		fastqc.out.collect(),
-		picard_cmm.out.mix(picard_crsm.out).collect(),
-		salmon.out.logs.collect(),
-		star.out.logs.collect()
+		fastqc.out.collect().ifEmpty([]),
+		picard_cmm.out.mix(picard_crsm.out).collect().ifEmpty([]),
+		salmon.out.logs.collect().ifEmpty([]),
+		star.out.logs.collect().ifEmpty([])
 	)
 
 	

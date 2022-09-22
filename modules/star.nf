@@ -20,6 +20,9 @@ process star {
 	tuple val(meta), path("*toTranscriptome.out.bam"), optional: true, emit: bam_transcriptome
 	path "*Log*", emit: logs
 
+	when:
+	!params.skip_align
+
 	"""
 	STAR \\
 		--runThreadN ${task.cpus} \\

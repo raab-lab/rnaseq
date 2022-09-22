@@ -3,6 +3,22 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+## [1.2] - 2022-09-06
+
+### Updates
+
+This release adds options to skip specific modules of the pipeline. This way if i.e. only counts are needed everything else can be skipped.
+
+### Parameters
+
+| Old parameters         | New parameters         |
+| ---------------------- | ---------------------- |
+|                        | `--skip_quant`	  |
+|                        | `--skip_align`	  |
+|                        | `--skip_coverage`  	  |
+|                        | `--skip_qc`	  	  |
+|                        | `--skip_multiqc`  	  |
+
 ## [1.1] - 2022-08-30
 
 :exclamation: Big Enhancement

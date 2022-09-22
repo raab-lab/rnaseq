@@ -17,6 +17,9 @@ process multiqc {
 	file "multiqc_report.html"
 	file "multiqc_data"
 
+	when:
+	!params.skip_multiqc
+
 	"""
 	multiqc .
 	"""

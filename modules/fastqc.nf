@@ -14,6 +14,9 @@ process fastqc {
 	output:
 	path "*.{zip,html}"
 
+	when:
+	!params.skip_qc
+
 	script:
 	"""
 	fastqc -t ${task.cpus} "$fq1" "$fq2"

@@ -10,11 +10,11 @@ def helpMessage() {
 											      | |
 											      |_|
 	===========================================================================================
-	Usage:
+	\033[1;34mUsage\033[0m:
 	nextflow run raab-lab/rnaseq (--create_samplesheet|--sample_sheet) </path/>
 	nextflow run raab-lab/rnaseq (--new_experiment|--pull_samples) <ID>
 
-	Arguments:
+	\033[1;34mArguments\033[0m:
 	--help
 		Display this message
 
@@ -36,7 +36,7 @@ def helpMessage() {
 	--outdir </path/>
 		Path to your desired output directory [Default: Output]
 
-	Tool Options:
+	\033[1;34mTool Options\033[0m:
 	--star_idx </path/>
 		Path to STAR index [Default:/proj/seq/data/STAR_genomes_v277/GRCh38_p13_GENCODE_primary]
 
@@ -52,7 +52,22 @@ def helpMessage() {
 	--ribo_intervals </path/>
 		Path to ribosomal intervals file for picard [Default:/proj/jraablab/users/pkuhlers/seq_resources/GRCh38_rRNA.interval_list]
 
-	Arguments to Always Include:
+	--skip_coverage
+		Flag to skip deepTools coverage
+
+	--skip_align
+		Flag to skip STAR alignment
+
+	--skip_quant
+		Flag to skip Salmon quantification
+
+	--skip_qc
+		Flag to skip FastQC and Picard
+
+	--skip_multiqc
+		Flag to skip multiqc report generation
+
+	\033[1;34mArguments to Always Include\033[0m:
 	-latest
 		Flag to pull the latest pipeline release from GitHub
 

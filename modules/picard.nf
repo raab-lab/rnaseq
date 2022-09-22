@@ -18,6 +18,9 @@ process picard_cmm {
 	output:
 	path "*metrics*"
 
+	when:
+	!params.skip_align || !params.skip_qc
+
 	"""
 	picard CollectMultipleMetrics \
 		I=$bam \
@@ -25,7 +28,6 @@ process picard_cmm {
 		R=${genome}
 	"""
 }
-
 
 
 process picard_crsm {
@@ -46,6 +48,9 @@ process picard_crsm {
 
 	output:
 	path "*metrics*"
+
+	when:
+	!params.skip_align || !params.skip_qc
 
 	"""
 	picard CollectRnaSeqMetrics \
@@ -71,6 +76,9 @@ process picard_md {
 
 	output:
 	path "*metrics*"
+
+	when:
+	!params.skip_align || !params.skip_qc
 
 	"""
 	module add picard/2.23.4

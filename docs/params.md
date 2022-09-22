@@ -69,6 +69,26 @@ Path to refFlat file for picard [Default:/proj/seq/data/hg38_UCSC/Annotation/Gen
 
 Path to ribosomal intervals file for picard [Default:/proj/jraablab/users/pkuhlers/seq_resources/GRCh38_rRNA.interval_list]
 
+`--skip_coverage`
+
+Flag to skip deepTools coverage
+
+`--skip_align`
+
+Flag to skip STAR alignment
+
+`--skip_quant`
+
+Flag to skip Salmon quantification
+
+`--skip_qc`
+
+Flag to skip FastQC and Picard
+
+`--skip_multiqc`
+
+Flag to skip multiqc report generation
+
 `-latest`
 
 Flag to pull the latest pipeline release from GitHub
