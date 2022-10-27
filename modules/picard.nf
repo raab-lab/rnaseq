@@ -52,13 +52,15 @@ process picard_crsm {
 	when:
 	!params.skip_align || !params.skip_qc
 
+	script:
+	def strand = params.single ? "NONE" : "SECOND_READ_TRANSCRIPTION_STRAND"
 	"""
 	picard CollectRnaSeqMetrics \
 		I=$bam \
 		O=${meta.id}_rnaseq_metrics \
 		R=${genome} \
 		REF_FLAT=${ref_flat} \
-		STRAND_SPECIFICITY=SECOND_READ_TRANSCRIPTION_STRAND \
+		STRAND_SPECIFICITY=$strand \
 		RIBOSOMAL_INTERVALS=${ribo_intervals}
 	"""
 }

@@ -40,8 +40,14 @@ def helpMessage() {
 	--star_idx </path/>
 		Path to STAR index [Default:/proj/seq/data/STAR_genomes_v277/GRCh38_p13_GENCODE_primary]
 
+	--star_quantMode <value>
+		Optional quantMode settings to add to STAR. Must be of the form '--quantMode GeneCounts' when given on command line [Default: None]
+
 	--salmon_idx </path/>
 		Path to salmon index [Default:/proj/seq/data/salmon_RNAseq_genomes/hg38_decoy/salmon_sa_index/default]
+
+	--salmon_opts <value>
+		Extra salmon options [Default: '--gcBias --seqBias --posBias']
 
 	--genome </path/>
 		Path to genome fasta for picard [Default:/proj/seq/data/STAR_genomes_v277/GRCh38_p13_GENCODE_primary/GRCh38.primary_assembly.genome.fa]
@@ -51,6 +57,9 @@ def helpMessage() {
 
 	--ribo_intervals </path/>
 		Path to ribosomal intervals file for picard [Default:/proj/jraablab/users/pkuhlers/seq_resources/GRCh38_rRNA.interval_list]
+
+	--single
+		Flag to run pipeline in single end mode
 
 	--skip_coverage
 		Flag to skip deepTools coverage

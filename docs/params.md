@@ -53,9 +53,19 @@ Path to your desired output directory [Default: Output]
 
 Path to STAR index [Default:/proj/seq/data/STAR_genomes_v277/GRCh38_p13_GENCODE_primary]
 
+`--star_quantMode` <value>
+
+Use this flag to add arguments to the `--quantMode` option to STAR (see STAR manual for options)
+Must have the form '--quantMode GeneCounts' when used on the command line [Default: None]
+
 `--salmon_idx </path/>`
 
 Path to salmon index [Default:/proj/seq/data/salmon_RNAseq_genomes/hg38_decoy/salmon_sa_index/default]
+
+`--salmon_opts` <value>
+
+Use this flag to change salmon options.
+Must have form '--gcBias' when used on the command line [Default:'--gcBias --seqBias --posBias']
 
 `--genome </path/>`
 
@@ -68,6 +78,10 @@ Path to refFlat file for picard [Default:/proj/seq/data/hg38_UCSC/Annotation/Gen
 `--ribo_intervals </path/>`
 
 Path to ribosomal intervals file for picard [Default:/proj/jraablab/users/pkuhlers/seq_resources/GRCh38_rRNA.interval_list]
+
+`--single`
+
+Flag to run the pipeline with single end reads
 
 `--skip_coverage`
 

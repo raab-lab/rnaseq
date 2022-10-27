@@ -18,7 +18,9 @@ process fastqc {
 	!params.skip_qc
 
 	script:
+	def reads = params.single ? "$fq1" : "$fq1 $fq2"
+
 	"""
-	fastqc -t ${task.cpus} "$fq1" "$fq2"
+	fastqc -t ${task.cpus} $reads
 	"""
 }

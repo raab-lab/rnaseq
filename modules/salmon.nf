@@ -23,13 +23,16 @@ process salmon {
 	when:
 	!params.skip_quant
 
+	script:
+	//https://github.com/nf-core/rnaseq/blob/7106bd792b3fb04f9f09b4e737165fa4e736ea81/modules/nf-core/modules/salmon/quant/main.nf#L30
+	def reads = params.single ? "-r $fq1" : "-1 $fq1 -2 $fq2"
+
 	"""
 	salmon quant \\
 			-i ${index} \\
 			-l A \\
 			${options} \\
-			-1 "$fq1" \\
-			-2 "$fq2" \\
+			$reads \\
 			-p ${task.cpus} \\
 			-o ${meta.id}
 	"""

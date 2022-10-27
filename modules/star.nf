@@ -23,12 +23,15 @@ process star {
 	when:
 	!params.skip_align
 
+	script:
+	def reads = params.single ? "$fq1" : "$fq1 $fq2"
+
 	"""
 	STAR \\
 		--runThreadN ${task.cpus} \\
 		--readFilesCommand zcat \\
 		--genomeDir ${index} \\
-		--readFilesIn $fq1 $fq2 \\
+		--readFilesIn $reads \\
 		--outSAMtype BAM SortedByCoordinate \\
 		${quantMode} \\
 		--outFileNamePrefix ${meta.id}_ \\

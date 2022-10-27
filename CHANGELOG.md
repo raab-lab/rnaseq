@@ -3,6 +3,16 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+## [1.3] - 2022-10-27
+
+This release adds handling for single end reads. Simply leave the R2 column of the sample sheet blank and add --single to the command line.
+
+### Parameters
+
+| Old parameters         | New parameters         |
+| ---------------------- | ---------------------- |
+|                        | `--single`		  |
+
 ## [1.2] - 2022-09-06
 
 ### Updates

@@ -16,6 +16,7 @@ params.create_samplesheet 	= ''
 params.new_experiment		= ''
 params.pull_samples		= ''
 params.help			= false
+params.single			= false
 
 // import subworkflows
 
