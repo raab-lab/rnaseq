@@ -10,7 +10,7 @@
 
 module add nextflow
 
-source ~/.secrets
+source ~/.secrets/airtable
 
 ## MODIFY THE EXPERIMENT ID, WORK, OUTPUT, AND EMAIL FOR YOUR RUN
 nextflow run raab-lab/rnaseq \
