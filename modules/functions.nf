@@ -77,6 +77,9 @@ def helpMessage() {
 		Flag to skip multiqc report generation
 
 	\033[1;34mArguments to Always Include\033[0m:
+	-profile <hg38 or mm10>
+		Sets species specific variables [Default: hg38]
+
 	-latest
 		Flag to pull the latest pipeline release from GitHub
 

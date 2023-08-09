@@ -101,6 +101,11 @@ Flag to skip FastQC and Picard
 
 `--skip_multiqc`
 
+`-profile`
+
+Sets species specific variables. Either 'hg38' or 'mm10'.
+The default pipeline parameters correspond to `-profile hg38`
+
 Flag to skip multiqc report generation
 
 `-latest`

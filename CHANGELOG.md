@@ -3,6 +3,19 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+## [1.4] - 2023-08-09
+
+### Updates
+
+This small release adds an option to use the `-profiles` parameter. Profiles allow you to set a group of variables all at once.
+The implemented profiles specifically simplify changing species specific parameters (mm10 vs hg38). See docs for usage.
+
+### Parameters
+
+| Old parameters         | New parameters         |
+| ---------------------- | ---------------------- |
+|                        | `-profile`	          |
+
 ## [1.3] - 2022-10-27
 
 This release adds handling for single end reads. Simply leave the R2 column of the sample sheet blank and add --single to the command line.
