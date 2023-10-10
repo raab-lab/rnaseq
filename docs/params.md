@@ -11,6 +11,7 @@ Path to the experiment samplesheet in csv format. It should be formatted as foll
 |---------------|-----------------------------------------------|
 |R1		|Full path to the first read 			|
 |R2		|Full path to the second read 			|
+|SampleNumber	|Immutable SampleNumber (Airtable)		|
 |SampleID	|Unique sequencing library ID		   	|
 |Cell Line	|Cell line identifier (i.e. HepG2)		|
 |Treatment	|Treatment or experimental conditions		|
@@ -18,8 +19,8 @@ Path to the experiment samplesheet in csv format. It should be formatted as foll
 
 Example:
 
-    R1,R2,SampleID,Cell Line,Treatment,Replicate
-    /path/to/R1,/path/to/R2,UniqID,HepG2,Sorafenib,1
+    R1,R2,SampleNumber,SampleID,Cell Line,Treatment,Replicate
+    /path/to/R1,/path/to/R2,626,UniqID,HepG2,Sorafenib,1
 
 `--help`
 

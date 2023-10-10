@@ -3,6 +3,19 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+## [2.0] - 2023-10-10
+
+:exclamation: Major Release
+
+This release bumps several tool versions and introduces some changes.
+
+### Updates
+
+- The samplesheet now includes a new column called SampleNumber (see [docs](docs/params.md) for example)
+- Bumped to pyairtable to version 2.1.0.post1 and refactored airtable scripts to accomodate
+- Airtable is deprecating API keys, so code was refactored to take personal access tokens
+- Bumped the nextflow version to the latest on longleaf
+
 ## [1.4] - 2023-08-09
 
 ### Updates

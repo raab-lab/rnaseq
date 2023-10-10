@@ -13,6 +13,7 @@ module add nextflow
 ## MODIFY THE SAMPLE SHEET AND EMAIL FOR YOUR RUN
 nextflow run raab-lab/rnaseq \
 		--sample_sheet /path/to/sample_sheet \
+		-profile mm10/hg38 \
 		--outdir /path/to/Output \
 		-w /path/to/work \
 		-with-report \
