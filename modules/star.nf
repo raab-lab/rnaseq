@@ -6,6 +6,7 @@ process star {
 	tag "${meta.id}"
 	publishDir "${params.outdir}/${meta.id}"
 	publishDir "${params.outdir}/bam", mode: 'copy', pattern: '*.bam*'
+	publishDir "${params.outdir}/star_counts", mode: 'copy', pattern: '*.tab*'
 
 	module 'star/2.7.7a'
 	module 'samtools'
@@ -18,6 +19,7 @@ process star {
 	output:
 	tuple val(meta), path("*Aligned.sortedByCoord.out.bam"), path("*Aligned.sortedByCoord.out.bam.bai"), emit: bam
 	tuple val(meta), path("*toTranscriptome.out.bam"), optional: true, emit: bam_transcriptome
+	tuple val(meta), path("*ReadsPerGene.out.tab"), optional: true, emit: counts
 	path "*Log*", emit: logs
 
 	when:

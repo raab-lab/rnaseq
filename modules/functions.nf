@@ -61,6 +61,26 @@ def helpMessage() {
 	--single
 		Flag to run pipeline in single end mode
 
+	--coverage_region
+
+	Maps to deepTools --region
+
+	--coverage_exclude
+
+	Path to bed file for regions to exclude for coverage. Maps to deepTools --blackListFileName
+
+	--coverage_cores
+
+	Number of cores for computing coverage [Default: 6]
+
+	--trim
+
+	Flag to perform trimming prior to mapping [Default: False]
+
+	--downsample <percent>
+
+	Downsample to <percent> (ex. 0.1 to downsample to 10%) prior to coverage calculation [Default: OFF]
+
 	--skip_coverage
 		Flag to skip deepTools coverage
 

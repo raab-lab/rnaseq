@@ -3,6 +3,30 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+
+## [2.1] - 2024-11-21
+
+This release adds new functionality for better processing of recent tt-seq samples.
+
+### Updates
+
+- Added an adapter trimming module
+- Added option to downsample reads prior to running coverage
+- Added option to increase cores for coverage
+- Added option to subset to specific chromosome region or to use a bed file of regions to exclude
+- STAR gene counts are output to 'outdir/star_counts' if requested
+- Fixed logic that caused some steps to be run even with --skip_xxx 
+
+### Parameters
+
+| Old parameters         | New parameters         |
+| ---------------------- | ---------------------- |
+|                        | `--trim`	          |
+|                        | `--downsample <pct>`   |
+|                        | `--coverage_cores`     |
+|                        | `--coverage_region`    |
+|                        | `--coverage_exclude`   |
+
 ## [2.0] - 2023-10-10
 
 :exclamation: Major Release

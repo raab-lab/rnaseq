@@ -5,11 +5,13 @@
 include { create_ss }					from '../modules/create_samplesheet'
 include { check_ss }					from '../modules/check_samplesheet'
 include { fastqc }					from '../modules/fastqc'
+include { trim }					from '../modules/fastqc'
 include { salmon }					from '../modules/salmon'
 include { star }					from '../modules/star'
 include { picard_cmm; picard_crsm }			from '../modules/picard'
 include { coverage as cov_fw }				from '../modules/coverage'
 include { coverage as cov_rev }				from '../modules/coverage'
+include { downsample_bam }				from '../modules/coverage'
 include { multiqc }					from '../modules/multiqc'
 
 // Define workflow
@@ -44,7 +46,14 @@ workflow RNASEQ {
 		.set { READS }
 
 	// FastQC
-	fastqc(READS)
+	if(params.trim) {
+		trim(READS)
+		READS=trim.out.trimmed
+		QC=trim.out.fqc
+	} else {
+		fastqc(READS)
+		QC=fastqc.out
+	}
 
 	// Quantify Expression 
 	salmon(READS, params.salmon_idx, params.salmon_opts)
@@ -57,12 +66,19 @@ workflow RNASEQ {
 	picard_crsm(star.out.bam, params.genome, params.ref_flat, params.ribo_intervals)
 
 	// Coverage Tracks
-	cov_fw(star.out.bam, 'forward')
-	cov_rev(star.out.bam, 'reverse')
+	if(params.downsample) {
+		downsample_bam(star.out.bam, params.downsample)
+		BAM=downsample_bam.out.bam
+	} else {
+		BAM=star.out.bam
+	}
+
+	cov_fw(BAM, params.coverage_region, params.coverage_exclude, 'forward')
+	cov_rev(BAM, params.coverage_region, params.coverage_exclude, 'reverse')
 
 	// Collect all QC outputs to multiqc
 	multiqc(
-		fastqc.out.collect().ifEmpty([]),
+		QC.collect().ifEmpty([]),
 		picard_cmm.out.mix(picard_crsm.out).collect().ifEmpty([]),
 		salmon.out.logs.collect().ifEmpty([]),
 		star.out.logs.collect().ifEmpty([])

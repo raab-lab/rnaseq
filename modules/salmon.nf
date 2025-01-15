@@ -3,7 +3,7 @@
 process salmon {
 
 	cpus 8
-	module 'salmon/1.8.0'
+	module 'salmon/1.10.0'
 	memory { 32.GB * task.attempt }
 	time { 24.h * task.attempt }
 	
