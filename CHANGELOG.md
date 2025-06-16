@@ -3,6 +3,11 @@ raab-lab/rnaseq: Changelog
 
 The format of this changelog is based on the [nf-core](https://github.com/nf-core/rnaseq/blob/master/CHANGELOG.md) changelog.
 
+## [2.2] - 2025-06-12
+
+This release adds genotype to the sample sheet ([docs](docs/params.md)).
+Additionally adds a 'Notes' column to the sample sheet when it is pulled from airtable
+this is *not* enforced for downstream processing. Future releases may do more with this column.
 
 ## [2.1] - 2024-11-21
 

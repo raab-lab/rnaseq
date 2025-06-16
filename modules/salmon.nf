@@ -38,36 +38,6 @@ process salmon {
 	"""
 }
 
-process salmon_single {
-
-	cpus 8
-	memory { 32.GB * task.attempt }
-	time { 24.h * task.attempt }
-
-	tag "${meta.id}"
-	publishDir "${params.outdir}/${meta.id}"
-
-	input:
-	tuple val(meta), path(fq1)
-	path index
-	val options
-
-	output:
-	path "${meta.id}", emit: quants
-	path "*", emit: logs
-
-	"""
-	module add salmon/1.5.2
-	salmon quant \\
-			-i ${index} \\
-			-l A \\
-			${options} \\
-			-r "$fq1" \\
-			-p 8 \\
-			-o ${meta.id}
-	"""
-}
-
 process star_salmon {
 
 	cpus 8

@@ -15,7 +15,7 @@ args <- commandArgs(trailingOnly = T)
 SS <- read.csv(args[1], colClasses = "character", na.strings = c("", "NA"), check.names = F)
 workflow <- args[2]
 
-cols <- c("R1", "R2", "SampleNumber", "SampleID", "Cell Line", "Treatment", "Replicate")
+cols <- c("R1", "R2", "SampleNumber", "SampleID", "Cell Line", 'Genotype', "Treatment", "Replicate")
 
 if ( !("SampleNumber" %in% colnames(SS)) ) {
 	SS$SampleNumber <- seq_along(nrow(SS))
