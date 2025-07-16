@@ -8,7 +8,7 @@ process star {
 	publishDir "${params.outdir}/bam", mode: 'copy', pattern: '*.bam*'
 	publishDir "${params.outdir}/star_counts", mode: 'copy', pattern: '*.tab*'
 
-	module 'star/2.7.7a'
+	module 'star/2.7.11b'
 	module 'samtools'
 
 	input:
