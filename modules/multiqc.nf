@@ -5,7 +5,7 @@ process multiqc {
 	time { 8.h * task.attempt  }
 	publishDir "${params.outdir}", mode: 'copy'
 
-	module 'multiqc/1.11'
+	module 'multiqc/1.28'
 
 	input:
 	path fastqc 
