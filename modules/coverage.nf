@@ -2,7 +2,7 @@
 process coverage {
 
 	tag "${meta.id}"
-	module 'deeptools/3.2.0'
+	module 'deeptools/3.5.4'
 	cpus "${params.coverage_cores}"
 	time '48h'
 	memory '32G'
