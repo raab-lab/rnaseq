@@ -7,8 +7,8 @@ process picard_cmm {
 	time '8h'
 	tag "${meta.id}"
 
-	module 'r/3.6.0'
-	module 'picard/2.23.4'
+	module 'r/4.4.0'
+	module 'picard/3.4.0'
 	publishDir "${params.outdir}/${meta.id}/qc"
 
 	input:
@@ -36,8 +36,8 @@ process picard_crsm {
 	memory '20G'
 	time '8h'
 	tag "${meta.id}"
-	module 'r/3.6.0'
-	module 'picard/2.23.4'
+	module 'r/4.4.0'
+	module 'picard/3.4.0'
 	publishDir "${params.outdir}/${meta.id}/qc"
 
 	input:
