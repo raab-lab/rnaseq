@@ -3,7 +3,7 @@ process fastqc {
 	cpus 2
 	memory { 8.GB * task.attempt }
 	time { 8.h * task.attempt }
-	module 'fastqc/0.11.8'
+	module 'fastqc/0.12.1'
 
 	tag "${meta.id}"
 	publishDir "${params.outdir}/${meta.id}/qc"
