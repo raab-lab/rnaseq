@@ -17,7 +17,7 @@ process tximport {
 	path "*.rds"
 
 	"""
-	module add r/4.0.3
+	module add r/4.4.0
 	
 	tximport.R $tx2gene $name $workflow $featInfo $method $quant
 	"""
