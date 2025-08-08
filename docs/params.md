@@ -101,6 +101,10 @@ Number of cores for computing coverage [Default: 6]
 
 Flag to perform trimming prior to mapping [Default: False]
 
+`--quality-trim <INT>`
+
+Quality threshold for trimming low-quality bases during trimming. Sets the `-q` parameter for trim_galore [Default: 20]
+
 `--downsample <percent>`
 
 Downsample to <percent> (ex. 0.1 to downsample to 10%) prior to coverage calculation [Default: OFF]
