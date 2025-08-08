@@ -46,7 +46,8 @@ process trim {
 	!params.skip_qc
 
 	script:
+	def quality_flag = params.quality_trim ? "-q ${params.quality_trim}" : ""
 	"""
-	trim_galore -j ${task.cpus} --fastqc --paired --gzip --basename ${meta.id} ${fastq1} ${fastq2}
+	trim_galore -j ${task.cpus} --fastqc --paired --gzip --basename ${meta.id} ${quality_flag} ${fastq1} ${fastq2}
 	"""
 }
