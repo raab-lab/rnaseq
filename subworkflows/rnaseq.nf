@@ -47,7 +47,7 @@ workflow RNASEQ {
 		.set { READS }
 
 	// FastQC
-	if(params.trim) {
+	if(params.trim || params.quality_trim) {
 		trim(READS)
 		READS=trim.out.trimmed
 		QC=trim.out.fqc
