@@ -26,7 +26,7 @@ def parse_samplesheet(LinkedHashMap row){
 	meta.trt	= row.Treatment
 	meta.rep	= row.Replicate
 
-	def array = [meta, file(row.R1), file(row.R2) ]
+	def array = params.single ? [meta, file(row.R1), []] : [meta, file(row.R1), file(row.R2)]
 
 	return array
 }
