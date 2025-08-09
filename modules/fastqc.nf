@@ -39,7 +39,7 @@ process trim {
 	tuple val(meta), path(fq1), path(fq2)
 
 	output:
-	tuple val(meta), path("*_val_1.fq.gz"), path("*_val_2.fq.gz"), emit: trimmed
+	tuple val(meta), path("*.fq.gz"), emit: trimmed
 	path "*.{zip,html}", emit: fqc
 
 	when:
