@@ -36,7 +36,7 @@ process trim {
 	publishDir "${params.outdir}/${meta.id}/qc"
 
 	input:
-	tuple val(meta), path(fastq1), path(fastq2)
+	tuple val(meta), path(fq1), path(fq2)
 
 	output:
 	tuple val(meta), path("*_val_1.fq.gz"), path("*_val_2.fq.gz"), emit: trimmed
