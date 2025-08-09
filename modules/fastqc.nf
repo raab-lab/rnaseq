@@ -48,7 +48,8 @@ process trim {
 	script:
 	def quality_flag = params.trim ? "-q ${params.quality_trim}" : ""
 	def reads = params.single ? "$fq1" : "$fq1 $fq2"
+	def paired = params.single ? "": "--paired" 
 	"""
-	trim_galore -j ${task.cpus} --fastqc --paired --gzip --basename ${meta.id} ${quality_flag} ${reads}
+	trim_galore -j ${task.cpus} --fastqc $paired --gzip --basename ${meta.id} ${quality_flag} ${reads}
 	"""
 }
